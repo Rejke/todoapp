@@ -1,3 +1,3 @@
 class Project < ApplicationRecord
-    has_many :todo, dependent: :destroy
+    has_many :todos, dependent: :destroy
 end
