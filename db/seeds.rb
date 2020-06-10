@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+seed_file = Rails.root.join('db', 'seeds.yml')
+hash = HashWithIndifferentAccess.new(YAML::load_file(seed_file))
+
+hash[:projects].each do |project|
+    proj = Project.new(title: project[:title])
+
+    project[:todos].each do |todo|
+        proj.todos << Todo.create(todo)
+    end
+    
+    proj.save!
+end
