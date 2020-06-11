@@ -1,13 +1,31 @@
-<h1>Задачи</h1>
+<header>
+  <h1>Задачи</h1>
+  <a href="#" id="showTodo-btn"><%= image_tag(image_path("baseline_add_white_48dp.png")) %></a>
+</header>
 
-<br>
-<br>
-
-<% @projects.each do |project| %>
-    <h2><%= project.title %></h2>
-    <ul>
+<main>
+  <% @projects.each do |project| %>
+    <div>
+      <h2><%= project.title %></h2>
+      <ul>
         <% project.todos.each do |todo| %>
-            <li><%= todo.text %></li>
+          <li><%= todo.text %></li>
         <% end %>
-    </ul>
-<% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <br>
+
+  <div id="newTodo">
+    <h2>Новая задача</h2>
+
+    <%= form_for(:todo, url: todo_create_path, html: { id: "newTodo-form" }) do |f| %>
+      <%= f.text_field(:text, { placeholder: "Название задачи..." }) %>
+      <%= f.select(:project_id, @projects.map { |p| [p.title, p.id] } ) %>
+      <br>
+      <%= link_to("ОТМЕНА", "#", id: "discard-btn") %>
+      <%= link_to("OK", "#", id: "submit-btn") %>
+    <% end %>
+  </div>
+</main>
