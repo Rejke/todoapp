@@ -14,3 +14,21 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+$(document).ready(function () {
+    let todoDiv = $("#newTodo");
+    todoDiv.hide();
+
+    $("#submit-btn").click(function(event) {
+        event.preventDefault();
+        $("#newTodo-form").submit();
+    });
+
+    $("#showTodo-btn").click(function (event) {
+        todoDiv.show();
+    });
+
+    $("#discard-btn").click(function (event) {
+        todoDiv.hide();
+    });
+});
