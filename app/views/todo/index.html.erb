@@ -1,6 +1,8 @@
 <header>
-  <h1>Задачи</h1>
-  <a href="#" id="showTodo-btn"><%= image_tag(image_path("baseline_add_white_48dp.png")) %></a>
+  <div class="container">
+    <h1>Задачи</h1>
+    <%= link_to(image_tag(image_path("baseline_add_white_48dp.png")), "#", id: "showTodo-btn") %>
+  </div>
 </header>
 
 <main>

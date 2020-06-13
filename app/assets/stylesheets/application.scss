@@ -13,3 +13,30 @@
  *= require_tree .
  *= require_self
  */
+
+@font-face {
+    font-family: 'Open Sans';
+    src: font_path('OpenSans-Light.ttf');
+    src: font_path('OpenSans-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: font-url('OpenSans-Regular.ttf');
+    src: font-url('OpenSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: font-url('OpenSans-Semibold.ttf');
+    src: font-url('OpenSans-Semibold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+html, body {
+    height: 100%;
+    margin:0;
+    padding:0;
+}
