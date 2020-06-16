@@ -8,15 +8,12 @@ class TodoController < ApplicationController
 
   def create
     @todo = Todo.new(post_params)
-    Project.all.each do |project|
-      if project.id == @todo.project_id then
-        project.todos << @todo
-      end
-    end
+    @todo.isCompleted = false
+    Project.all[@todo.project_id - 1].todos << @todo
     redirect_back(fallback_location: root_path)
   end
 
   private def post_params
-    params.require(:todo).permit(:text, :project_id)
+    params.require(:todo).permit(:text, :isCompleted, :project_id)
   end
 end
