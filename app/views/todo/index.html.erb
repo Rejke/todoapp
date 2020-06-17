@@ -12,7 +12,7 @@
       <h2><%= project.title %></h2>
       <ul>
         <% project.todos.each do |todo| %>
-          <li><%= todo.text %></li>
+          <li><input type="checkbox"> <%= todo.text %></li>
         <% end %>
       </ul>
     </div>
@@ -32,3 +32,13 @@
     <% end %>
   </div>
 </main>
+
+<script>
+    $(document).ready(function(){
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%'
+        });
+    });
+</script>
