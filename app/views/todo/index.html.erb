@@ -1,13 +1,14 @@
 <header>
   <div class="container">
+    <div></div>
     <h1>Задачи</h1>
-    <%= link_to(image_tag(image_path("addTodoIcon.png")), "#", id: "showTodo-btn", class: "element") %>
+    <%= link_to(image_tag(image_path("addTodoIcon.png")), "#", id: "showTodo-btn") %>
   </div>
 </header>
 
 <main>
   <% @projects.each do |project| %>
-    <div>
+    <div class="card">
       <h2><%= project.title %></h2>
       <ul>
         <% project.todos.each do |todo| %>
