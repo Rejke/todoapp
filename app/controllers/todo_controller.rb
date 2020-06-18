@@ -4,10 +4,13 @@ class TodoController < ApplicationController
   end
 
   def update
+    @todo = Todo.find(params[:id])
+    @todo.update(isCompleted: @todo.isCompleted ? false : true)
+    redirect_back(fallback_location: root_path)
   end
 
   def create
-    @todo = Todo.new(post_params)
+    @todo = Todo.new(todo_params)
     Project.all.each do |project|
       if project.id == @todo.project_id then
         project.todos << @todo
@@ -16,7 +19,7 @@ class TodoController < ApplicationController
     redirect_back(fallback_location: root_path)
   end
 
-  private def post_params
+  private def todo_params
     params.require(:todo).permit(:text, :project_id)
   end
 end
