@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'todo/index'
 
-  get 'todo/update'
+  patch 'todo/update/:id', to: 'todo#update', as: 'todo_update'
 
   post 'todo/create'
 
