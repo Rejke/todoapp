@@ -1,0 +1,220 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+@font-face {
+    font-family: 'Open Sans';
+    src: font_path('OpenSans-Light.ttf');
+    src: font_path('OpenSans-Light.ttf') format('truetype');
+    font-weight: 300;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: font-url('OpenSans-Regular.ttf');
+    src: font-url('OpenSans-Regular.ttf') format('truetype');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'Open Sans';
+    src: font-url('OpenSans-Semibold.ttf');
+    src: font-url('OpenSans-Semibold.ttf') format('truetype');
+    font-weight: 600;
+}
+
+body {
+  background-color: #F8F8F8;
+  font-family: "Open Sans";
+}
+
+header {
+  color: white;
+  background-color: #3AAFDA;
+  vertical-align: middle;
+  position: relative;
+  text-align: center;
+
+  -webkit-box-shadow: 0px 1px 10px 0px rgba(58,175,218,1);
+  -moz-box-shadow: 0px 1px 10px 0px rgba(58,175,218,1);
+  box-shadow: 0px 1px 10px 0px rgba(58,175,218,1);
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0px 32px;
+
+    h1 {
+      margin: 0;
+      font-weight: 400;
+      flex-grow: 2;
+    }
+
+    a {
+      display: flex;
+      align-self: center;
+      align-items: center;
+      justify-content: flex-end;
+    }
+  }
+}
+
+main {
+  .card {
+    margin-top: 15px;
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(222,222,222,1);
+    -moz-box-shadow: 0px 1px 10px 0px rgba(222,222,222,1);
+    box-shadow: 0px 1px 10px 0px rgba(222,222,222,1);
+
+    h2 {
+      margin: 0;
+      padding: 15px;
+      font-size: 16px;
+      font-weight: 600;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #EAEAEA;
+    }
+
+    ul {
+      list-style: none;
+      padding-left: 24px;
+
+      li {
+        padding: 16px 0px;
+        form {
+          width: auto;
+          display: inline-flex;
+          justify-content: flex-start;
+          align-items: flex-start;
+
+          label {
+            cursor: pointer;
+            margin-left: 15px;
+            padding-right: 24px;
+            font-size: 16px;
+          }
+
+          label.checked { text-decoration: line-through; }
+
+          div.icheckbox_square-blue { min-width: 22px; }
+        }
+      }
+    }
+  }
+}
+
+.select2-selection, .select2-selection__rendered, .select2-selection__arrow {
+  height: 40px !important;
+
+  span {
+    line-height: 40px !important;
+    text-align: left;
+  }
+}
+
+.select2-selection {
+  border-radius: 0 !important;
+}
+
+div.modal {
+  z-index: 1000;
+  position: fixed;
+  top:0;
+  left:0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  div.modal-body {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 30px 0px;
+    width: 400px;
+    background-color: white;
+    -webkit-box-shadow: 0px 1px 10px 0px rgba(222,222,222,1);
+    -moz-box-shadow: 0px 1px 10px 0px rgba(222,222,222,1);
+    box-shadow: 0px 1px 10px 0px rgba(222,222,222,1);
+
+    div.modal-header {
+      padding: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      border-bottom-width: 1px;
+      border-bottom-style: solid;
+      border-bottom-color: #EAEAEA;
+      text-align: center;
+
+      h2 { margin: 0; }
+    }
+
+    div.modal-content {
+      padding: 20px;
+      form {
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+
+        div.modal-inputs {
+          display: flex;
+          flex-direction: column;
+          align-content: stretch;
+          justify-content: center;
+
+          input {
+            box-sizing: border-box;
+            color: rgb(68, 68, 68);
+            font-size: 14px;
+            height: 40px;
+            line-height: 40px;
+            padding-left: 8px;
+            padding-right: 20px;
+            text-align: left;
+            margin-bottom: 10px;
+            background-color: #fff;
+            border: 1px solid #aaa;
+            border-radius: 0px;
+          }
+
+          input:focus, span:focus { outline: none; }
+        }
+
+        div.modal-buttons {
+          margin-top: 10px;
+          display: inline-flex;
+          justify-content: space-between;
+          align-items: stretch;
+
+          a {
+            background-color: #3AAFDA;
+            color: white;
+            text-align: center;
+            font-weight: 600;
+            padding: 1em 1.5em;
+            text-decoration: none;
+            text-transform: uppercase;
+            width: 170px;
+          }
+        }
+      }
+    }
+  }
+}

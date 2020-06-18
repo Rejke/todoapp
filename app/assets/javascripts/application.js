@@ -16,6 +16,22 @@
 //= require_tree .
 
 $(document).ready(function () {
+    $('input').iCheck({
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue',
+        increaseArea: '20%'
+    });
+
+    $('#todo_project_id').select2({
+        minimumResultsForSearch: -1,
+        width: '360px'
+    });
+
+    $('input[type=checkbox]').on('ifChanged', function (event) {
+        this.form.submit();
+        $(`label[for=todo-cb-${this.split('-')[2]}]`).toggleClass("checked");
+    });
+
     let todoDiv = $("#newTodo");
     todoDiv.hide();
 

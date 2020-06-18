@@ -1,31 +1,49 @@
 <header>
-  <h1>Задачи</h1>
-  <a href="#" id="showTodo-btn"><%= image_tag(image_path("baseline_add_white_48dp.png")) %></a>
+  <div class="header-content">
+    <div></div>
+    <h1>Задачи</h1>
+    <%= link_to(image_tag(image_path('addTodoIcon.png')), '#', id: 'showTodo-btn') %>
+  </div>
 </header>
 
 <main>
-  <% @projects.each do |project| %>
-    <div>
-      <h2><%= project.title %></h2>
-      <ul>
-        <% project.todos.each do |todo| %>
-          <li><%= todo.text %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <br>
-
-  <div id="newTodo">
-    <h2>Новая задача</h2>
-
-    <%= form_for(:todo, url: todo_create_path, html: { id: "newTodo-form" }) do |f| %>
-      <%= f.text_field(:text, { placeholder: "Название задачи..." }) %>
-      <%= f.select(:project_id, @projects.map { |p| [p.title, p.id] } ) %>
-      <br>
-      <%= link_to("ОТМЕНА", "#", id: "discard-btn") %>
-      <%= link_to("OK", "#", id: "submit-btn") %>
+  <div class="container-fluid">
+    <% @projects.each do |project| %>
+      <div class="col-sm-12 col-md-6 col-lg-4">
+        <div class="card">
+          <h2><%= project.title %></h2>
+          <ul>
+            <% project.todos.sort_by{ |e| e[:id]}.each do |todo| %>
+              <li>
+                <%= form_for(Todo.find(todo.id), method: 'patch', url: todo_update_path(todo.id)) do |f|%>
+                  <%= f.check_box(:isCompleted, {id: "todo-cb-#{todo.id}"}, true, false) %>
+                  <%= f.label(:isCompleted, todo.text, {for: "todo-cb-#{todo.id}", class: todo.isCompleted ? 'checked' : nil}) %>
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
     <% end %>
   </div>
 </main>
+
+<div class="modal" id="newTodo">
+  <div class="modal-body">
+    <div class="modal-header">
+      <h2>Новая задача</h2>
+    </div>
+    <div class="modal-content">
+      <%= form_for(:todo, url: todo_create_path, html: { id: 'newTodo-form' }) do |f| %>
+        <div class="modal-inputs">
+          <%= f.text_field(:text, { placeholder: 'Название задачи...' }) %>
+          <%= f.select(:project_id, @projects.map { |p| [p.title, p.id] }, id: 'dropdown' ) %>
+        </div>
+        <div class="modal-buttons">
+          <%= link_to('ОТМЕНА', '#', { id: 'discard-btn', style: 'background-color: #9F9F9F;'}) %>
+          <%= link_to('OK', '#', id: 'submit-btn') %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
