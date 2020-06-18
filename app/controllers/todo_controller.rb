@@ -12,7 +12,7 @@ class TodoController < ApplicationController
   def create
     @todo = Todo.new(todo_params)
     @todo.isCompleted = false
-    Project.all[@todo.project_id - 1].todos << @todo
+    @todo.save
     redirect_back(fallback_location: root_path)
   end
 
