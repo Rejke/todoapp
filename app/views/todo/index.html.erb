@@ -15,7 +15,7 @@
           <ul>
             <% project.todos.sort_by{ |e| e[:id]}.each do |todo| %>
               <li>
-                <%= form_for(Todo.find(todo.id), method: 'patch', url: todo_update_path(todo.id)) do |f|%>
+                <%= form_for(todo, method: 'patch', url: todo_update_path(todo.id)) do |f|%>
                   <%= f.check_box(:isCompleted, {id: "todo-cb-#{todo.id}"}, true, false) %>
                   <%= f.label(:isCompleted, todo.text, {for: "todo-cb-#{todo.id}", class: todo.isCompleted ? 'checked' : nil}) %>
                 <% end %>
