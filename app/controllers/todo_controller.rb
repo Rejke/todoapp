@@ -5,7 +5,7 @@ class TodoController < ApplicationController
 
   def update
     @todo = Todo.find(params[:id])
-    @todo.update(isCompleted: @todo.isCompleted ? false : true)
+    @todo.update(isCompleted: !@todo.isCompleted)
     redirect_back(fallback_location: root_path)
   end
 
