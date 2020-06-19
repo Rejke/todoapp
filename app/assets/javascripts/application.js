@@ -33,7 +33,6 @@ $(document).ready(function () {
     });
 
     let todoDiv = $("#newTodo");
-    todoDiv.hide();
 
     $("#submit-btn").click(function(event) {
         event.preventDefault();
