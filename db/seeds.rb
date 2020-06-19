@@ -13,7 +13,7 @@ hash[:projects].each do |project|
     proj = Project.new(title: project[:title])
 
     project[:todos].each do |todo|
-        proj.todos << Todo.create(todo)
+        proj.todos << Todo.new(text: todo[:text], is_completed: todo[:isCompleted])
     end
     
     proj.save!
