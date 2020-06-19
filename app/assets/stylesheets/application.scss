@@ -133,6 +133,7 @@ main {
 }
 
 div.modal {
+  display: none;
   z-index: 1000;
   position: fixed;
   top:0;
