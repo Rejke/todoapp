@@ -36,7 +36,8 @@ $(document).ready(function () {
 
     $("#submit-btn").click(function(event) {
         event.preventDefault();
-        $("#newTodo-form").submit();
+        if ($("input[type=text]").val().length > 0)
+            $("#newTodo-form").submit();
     });
 
     $("#showTodo-btn").click(function (event) {
