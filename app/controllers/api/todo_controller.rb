@@ -10,5 +10,7 @@ class Api::TodoController < ApplicationController
   end
 
   def update
+    @todo = Todo.find(params[:id])
+    @todo.update(is_completed: !@todo.is_completed)
   end
 end
