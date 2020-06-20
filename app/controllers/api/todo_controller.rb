@@ -1,4 +1,8 @@
 class Api::TodoController < ApplicationController
+  def index
+    
+  end
+
   def create
     json = JSON.parse(request.body.read)
 
