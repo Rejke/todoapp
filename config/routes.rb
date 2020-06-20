@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    get 'todo/create'
+    post 'todo/create'
   end
 
   namespace :api do
