@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    patch 'todo/update/:id'
+    patch 'todo/update/:id' => 'todo#update'
   end
 
   get 'todo/index'
