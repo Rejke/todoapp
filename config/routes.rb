@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  namespace :api do
+    get 'todo/create'
+  end
+
+  namespace :api do
+    get 'todo/update'
+  end
+
   get 'todo/index'
 
   patch 'todo/update/:id', to: 'todo#update', as: 'todo_update'
