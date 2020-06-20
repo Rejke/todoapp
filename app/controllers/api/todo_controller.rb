@@ -1,16 +1,20 @@
 class Api::TodoController < ApplicationController
   def create
-    if String(params[:text]).empty? or params[:project_id] > Project.all.length then
+    json = JSON.parse(request.body.read)
+
+    if json.text.empty? or json.project_id > Project.all.length then
       render status: :bad_request
     else
-      @todo = Todo.new(params)
+      @todo = Todo.new(json)
       @todo.save
       render status: :created
     end
   end
 
   def update
-    @todo = Todo.find(params[:id])
-    @todo.update(is_completed: !@todo.is_completed)
+    json = JSON.parse(request.body.read)
+
+    @todo = Todo.find(json.id)
+    @todo.update(is_completed: json.is_completed)
   end
 end
