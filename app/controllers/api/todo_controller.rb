@@ -1,6 +1,8 @@
 class Api::TodoController < ApplicationController
   def index
-    
+    respond_to do |format|
+      format.json { render json: Todo.all}
+    end
   end
 
   def create
