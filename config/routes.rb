@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :api do
+    match 'projects/' => 'projects#index', :via => [:get], :defaults => { :format => 'json' }
     get 'projects/index'
   end
 
