@@ -1,26 +1,20 @@
 class Api::TodoController < ApplicationController
+  skip_before_action :verify_authenticity_token
   def index
     respond_to do |format|
-      format.json { render json: Todo.all}
+      format.json { render json: Todo.all.sort_by{ |e| e[:id]}}
     end
   end
 
   def create
     json = JSON.parse(request.body.read)
-
-    if json.text.empty? or json.project_id > Project.all.length then
-      render status: :bad_request
-    else
-      @todo = Todo.new(json)
-      @todo.save
-      render status: :created
-    end
+    @todo = Todo.create(json)
   end
 
   def update
     json = JSON.parse(request.body.read)
 
-    @todo = Todo.find(json.id)
-    @todo.update(is_completed: json.is_completed)
+    @todo = Todo.find(params[:id])
+    @todo.update(json)
   end
 end
