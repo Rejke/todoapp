@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   namespace :api do
     match 'todo/' => 'todo#index', :via => [:get], :defaults => { :format => 'json' }
     get 'todo/index'
-    post 'todo/create'
+    post 'todo/create' => 'todo#create'
     patch 'todo/update/:id' => 'todo#update'
   end
 
